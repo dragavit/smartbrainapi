@@ -32,7 +32,7 @@ db.select('*').from('users').then(data => {
 
 app.use(cors()) // middlare, без которого не будет связи у приложения с этим сервером
 
-//ROOT
+// ROOT
 app.get('/', (req, res) => {res.send('success!!!')})
 // // передадим все туда, чтобы в register.js не надо было импортировать knex и bcrypt. Это называется Dependency Injectino
 app.post('/signin', signin.handleSignin(db, bcrypt)) // раньше было: app.post('/signin', (req, res) => { signin.handleSignin(req, res, db, bcrypt) } ). Now instead of declaring the function we first running the first function which receives db y bcrypt and then it automatically receives req and res (см. signin.js). Получается каррирование
